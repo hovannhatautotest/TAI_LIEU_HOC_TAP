@@ -1,0 +1,77 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/06/2021  10:21:06  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE 10KHz.obj TO bodinhthoi1
+
+
+INPUT MODULES INCLUDED:
+  10KHz.obj (10KHZ)
+
+
+LINK MAP OF MODULE:  bodinhthoi1 (10KHZ)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0033H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  bodinhthoi1 (10KHZ)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        10KHZ
+  C:000BH         SYMBOL        DELAY10MS
+  C:000DH         SYMBOL        DELAY1MS
+  C:0021H         SYMBOL        DELAY1MS2
+  C:001FH         SYMBOL        DELAY200MS
+  C:0005H         SYMBOL        LOOP1
+  C:0000H         SYMBOL        MAIN
+  D:0090H         SYMBOL        P1
+  B:0088H.5       SYMBOL        TF0
+  D:008CH         SYMBOL        TH0
+  D:008AH         SYMBOL        TL0
+  D:0089H         SYMBOL        TMOD
+  B:0088H.4       SYMBOL        TR0
+  C:0000H         LINE#         5
+  C:0003H         LINE#         7
+  C:0005H         LINE#         13
+  C:0007H         LINE#         14
+  C:0009H         LINE#         15
+  C:000BH         LINE#         18
+  C:000DH         LINE#         21
+  C:0010H         LINE#         22
+  C:0013H         LINE#         23
+  C:0015H         LINE#         24
+  C:0018H         LINE#         25
+  C:001AH         LINE#         26
+  C:001CH         LINE#         27
+  C:001EH         LINE#         28
+  C:001FH         LINE#         31
+  C:0021H         LINE#         34
+  C:0024H         LINE#         35
+  C:0027H         LINE#         36
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/06/2021  10:21:06  PAGE 2
+
+
+  C:0029H         LINE#         37
+  C:002CH         LINE#         38
+  C:002EH         LINE#         39
+  C:0030H         LINE#         40
+  C:0032H         LINE#         41
+  -------         ENDMOD        10KHZ
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0033H BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=51
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

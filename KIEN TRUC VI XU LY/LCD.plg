@@ -1,0 +1,28 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\Admin\Desktop\KIEN TRUC VI XU LY\LCD.uvproj
+Project File Date:  12/08/2020
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling LCD16.c...
+LCD16.C(34): error C202: 'LCD_En': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling LCD16.c...
+LCD16.C(34): error C202: 'LCD_En': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling LCD16.c...
+LCD16.C(34): error C202: 'LCD_En': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling LCD16.c...
+LCD16.C(34): error C202: 'LCD_En': undefined identifier
+Target not created
+compiling LCD16.c...
+LCD16.C(34): error C202: 'LCD_En': undefined identifier
+LCD16.c - 1 Error(s), 0 Warning(s).

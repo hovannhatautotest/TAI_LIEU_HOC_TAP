@@ -1,0 +1,164 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        05/07/2020  16:27:04  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE 2_led_7_doan.obj TO 2_led_7_doan
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  2_led_7_doan.obj (2_LED_7_DOAN)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?IMUL)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?SIDIV)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  2_led_7_doan (2_LED_7_DOAN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0008H     UNIT         _DATA_GROUP_
+            IDATA   0010H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     00B7H     UNIT         ?PR?MAIN?2_LED_7_DOAN
+            CODE    08B7H     009DH     UNIT         ?C?LIB_CODE
+            CODE    0954H     0062H     UNIT         ?PR?_HIEN_THI?2_LED_7_DOAN
+            CODE    09B6H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   2_led_7_doan (2_LED_7_DOAN)
+
+
+SEGMENT                              DATA_GROUP 
+  +--> CALLED SEGMENT              START    LENGTH
+--------------------------------------------------
+?C_C51STARTUP                      -----    -----
+  +--> ?PR?MAIN?2_LED_7_DOAN
+
+?PR?MAIN?2_LED_7_DOAN              0008H    0008H
+  +--> ?PR?_HIEN_THI?2_LED_7_DOAN
+
+
+
+SYMBOL TABLE OF MODULE:  2_led_7_doan (2_LED_7_DOAN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        2_LED_7_DOAN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/07/2020  16:27:04  PAGE 2
+
+
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  B:0090H.0       PUBLIC        P1_0
+  B:0090H.1       PUBLIC        P1_1
+  B:00B0H.0       PUBLIC        P3_0
+  B:00B0H.1       PUBLIC        P3_1
+  C:0800H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0954H         PUBLIC        _hien_thi
+  D:00B8H         PUBLIC        IPL
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  -------         DO            
+  D:0006H         SYMBOL        phim_tang
+  D:0006H         SYMBOL        phim_giam
+  D:0008H         SYMBOL        sodem
+  D:000AH         SYMBOL        d_vi
+  D:000CH         SYMBOL        hang_chuc
+  D:000EH         SYMBOL        i
+  -------         ENDDO         
+  C:0800H         LINE#         11
+  C:0800H         LINE#         12
+  C:0800H         LINE#         14
+  C:0805H         LINE#         16
+  C:0805H         LINE#         17
+  C:0805H         LINE#         18
+  C:080BH         LINE#         19
+  C:080DH         LINE#         20
+  C:080DH         LINE#         21
+  C:0815H         LINE#         22
+  C:0820H         LINE#         23
+  C:082BH         LINE#         24
+  C:082BH         LINE#         25
+  C:082FH         LINE#         26
+  C:0831H         LINE#         27
+  C:0831H         LINE#         28
+  C:0839H         LINE#         29
+  C:0847H         LINE#         31
+  C:0847H         LINE#         33
+  C:0856H         LINE#         34
+  C:0868H         LINE#         38
+  C:086EH         LINE#         39
+  C:086EH         LINE#         40
+  C:0870H         LINE#         41
+  C:0872H         LINE#         42
+  C:0879H         LINE#         43
+  C:088CH         LINE#         44
+  C:08A2H         LINE#         45
+  C:08A2H         LINE#         46
+  C:08A4H         LINE#         47
+  C:08A6H         LINE#         48
+  C:08ADH         LINE#         49
+  -------         ENDPROC       MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/07/2020  16:27:04  PAGE 3
+
+
+  -------         PROC          _HIEN_THI
+  D:0006H         SYMBOL        number
+  C:0954H         LINE#         55
+  C:0954H         LINE#         56
+  C:0954H         LINE#         57
+  C:0982H         LINE#         58
+  C:0982H         LINE#         59
+  C:0987H         LINE#         60
+  C:098CH         LINE#         61
+  C:0991H         LINE#         62
+  C:0996H         LINE#         63
+  C:099BH         LINE#         64
+  C:09A0H         LINE#         65
+  C:09A5H         LINE#         66
+  C:09AAH         LINE#         67
+  C:09AFH         LINE#         68
+  C:09B2H         LINE#         69
+  C:09B2H         LINE#         70
+  C:09B5H         LINE#         71
+  -------         ENDPROC       _HIEN_THI
+  -------         ENDMOD        2_LED_7_DOAN
+
+  -------         MODULE        ?C?IMUL
+  C:08B7H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+  -------         MODULE        ?C?SIDIV
+  C:08C9H         PUBLIC        ?C?SIDIV
+  -------         ENDMOD        ?C?SIDIV
+
+  -------         MODULE        ?C?UIDIV
+  C:08FFH         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0119H BYTE (13%) *
+******************************************************************************
+
+Program Size: data=17.0 xdata=0 code=453
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

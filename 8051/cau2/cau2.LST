@@ -1,0 +1,88 @@
+A51 MACRO ASSEMBLER  CAU2                                                                 01/05/2021 15:15:55 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN cau2.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE cau2.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 00h
+0000 020030            2             LJMP MAIN
+0030                   3             ORG 30H
+0030                   4             MAIN:
+0030 1134              5               CALL CT0099
+0032 80FC              6               JMP MAIN
+0034                   7     CT0099:
+0034 7800              8             MOV R0,#00
+0036                   9             LAP:
+0036 113D             10                     CALL CTHT
+0038 08               11                     INC R0
+0039 B83CFA           12                     CJNE R0,#60,LAP
+003C 22               13             RET
+                      14     
+003D                  15     CTHT:
+003D 900071           16             MOV DPTR,#MALED
+0040 793C             17             MOV R1,#60
+0042                  18             QUET:
+0042 E8               19                     MOV A,R0
+0043 75F00A           20                     MOV B,#10
+0046 84               21                     DIV AB
+0047 93               22                     MOVC A,@A+DPTR
+0048 F5A0             23                     MOV P2,A
+004A D2B0             24                     SETB P3.0
+004C 115E             25                     CALL DELAY
+004E C2B0             26                     CLR P3.0
+0050 E5F0             27                     MOV A,B
+0052 93               28                     MOVC A,@A+DPTR
+0053 F5A0             29                     MOV P2,A
+0055 D2B1             30                     SETB P3.1
+0057 115E             31                     CALL DELAY
+0059 C2B1             32                     CLR P3.1
+005B D9E5             33                     DJNZ R1,QUET
+005D 22               34             RET
+                      35             
+005E                  36     DELAY:
+005E 758901           37             MOV TMOD,#01H
+0061 758CD8           38                     MOV TH0,#HIGH(-10000)
+0064 758AF0           39                     MOV TL0,#LOW(-10000)
+0067 D28C             40                     SETB TR0
+0069 308DFD           41                     JNB TF0,$
+006C C28C             42                     CLR TR0
+006E C28D             43                     CLR TF0
+0070 22               44             RET
+                      45     
+0071                  46     MALED:
+0071 C0F9A4B0         47             DB 0C0H,0F9H,0A4H,0B0H,99H,92H,82H,0F8H,80H,90H
+0075 999282F8                
+0079 8090                    
+                      48     end
+A51 MACRO ASSEMBLER  CAU2                                                                 01/05/2021 15:15:55 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+CT0099 . . . . . .  C ADDR   0034H   A   
+CTHT . . . . . . .  C ADDR   003DH   A   
+DELAY. . . . . . .  C ADDR   005EH   A   
+LAP. . . . . . . .  C ADDR   0036H   A   
+MAIN . . . . . . .  C ADDR   0030H   A   
+MALED. . . . . . .  C ADDR   0071H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+QUET . . . . . . .  C ADDR   0042H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

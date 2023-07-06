@@ -1,0 +1,54 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/07/2021  08:53:14  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE bai7.obj TO bai7
+
+
+INPUT MODULES INCLUDED:
+  bai7.obj (BAI7)
+
+
+LINK MAP OF MODULE:  bai7 (BAI7)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     001FH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  bai7 (BAI7)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        BAI7
+  C:0005H         SYMBOL        MAIN
+  C:0015H         SYMBOL        MALED
+  D:0080H         SYMBOL        P0
+  D:00A0H         SYMBOL        P2
+  C:0003H         SYMBOL        RESET
+  C:0000H         LINE#         4
+  C:0003H         LINE#         6
+  C:0005H         LINE#         8
+  C:0006H         LINE#         9
+  C:0007H         LINE#         10
+  C:0009H         LINE#         11
+  C:000CH         LINE#         12
+  C:000FH         LINE#         13
+  C:0010H         LINE#         14
+  C:0013H         LINE#         15
+  -------         ENDMOD        BAI7
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 001FH BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=31
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

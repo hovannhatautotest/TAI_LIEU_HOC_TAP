@@ -1,0 +1,172 @@
+A51 MACRO ASSEMBLER  LED7SEG                                                              06/06/2012 14:20:56 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.00b
+OBJECT MODULE PLACED IN led7seg.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE led7seg.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+  00B0                 1     P3_0 BIT 0xB0
+                       2     
+0000                   3     org 0x00
+0000 0130              4     ajmp main
+                       5     
+0030                   6     org 0x30
+0030                   7     main:
+0030 7400              8             mov A,#0
+                       9             
+0032                  10             main_loop:
+0032 30B004           11             JNB P3_0,tang
+                      12             ;mov P1,A
+0035 1144             13             acall hienthi
+0037 80F9             14             sjmp main_loop
+0039                  15             tang:
+0039 04               16                     INC A
+003A 30B0FD           17                     check: JNB P3_0,check ;chong rung phim
+                      18                     
+003D B40AF2           19                     CJNE A,#10,main_loop ; reset so dem ve 0
+0040 7400             20                     mov A,#0
+0042 80EE             21             sjmp main_loop
+                      22     
+0044                  23     hienthi:
+0044 B40005           24         CJNE A,#0,so_1
+0047 75A040           25         MOV P2,#0x40
+004A 0192             26         AJMP ket_thuc
+004C                  27         so_1:
+004C B40105           28         CJNE A,#1,so_2
+004F 75A079           29         MOV P2,#0x79
+0052 0192             30         AJMP ket_thuc
+0054                  31         so_2:
+0054 B40205           32         CJNE A,#2,so_3
+0057 75A024           33         MOV P2,#0x24
+005A 0192             34         AJMP ket_thuc
+005C                  35         so_3:
+005C B40305           36         CJNE A,#3,so_4
+005F 75A030           37         MOV P2,#0x30
+0062 0192             38         AJMP ket_thuc
+0064                  39         so_4:
+0064 B40405           40         CJNE A,#4,so_5
+0067 75A019           41         MOV P2,#0x19
+006A 0192             42         AJMP ket_thuc
+006C                  43         so_5:
+006C B40505           44         CJNE A,#5,so_6
+006F 75A012           45         MOV P2,#0x12
+0072 0192             46         AJMP ket_thuc
+0074                  47         so_6:
+0074 B40605           48         CJNE A,#6,so_7
+0077 75A002           49         MOV P2,#0x02
+007A 0192             50         AJMP ket_thuc
+007C                  51         so_7:
+007C B40705           52         CJNE A,#7,so_8
+007F 75A078           53         MOV P2,#0x78
+0082 0192             54         AJMP ket_thuc
+0084                  55         so_8:
+0084 B40805           56         CJNE A,#8,so_9
+0087 75A000           57         MOV P2,#0x00
+008A 0192             58         AJMP ket_thuc
+A51 MACRO ASSEMBLER  LED7SEG                                                              06/06/2012 14:20:56 PAGE     2
+
+008C                  59         so_9:
+008C B40903           60         CJNE A,#9,ket_thuc
+008F 75A010           61         MOV P2,#0x10
+0092                  62         ket_thuc:
+0092 22               63     RET
+                      64     
+0093                  65     prod_hienthi:
+0093 9400             66     subb A,#0
+0095 6024             67     jz hienthi0
+0097 9401             68      subb A,#1
+0099 6025             69     jz hienthi1
+009B 9402             70       subb A,#2
+009D 6026             71     jz hienthi2
+009F 9403             72      subb A,#3
+00A1 6027             73     jz hienthi3
+00A3 9404             74       subb A,#4
+00A5 6028             75     jz hienthi4
+00A7 9405             76      subb A,#5
+00A9 6029             77     jz hienthi5
+00AB 9406             78     subb A,#6
+00AD 602A             79     jz hienthi6
+00AF 9407             80      subb A,#7
+00B1 602B             81     jz hienthi7
+00B3 9408             82       subb A,#8
+00B5 602C             83     jz hienthi8
+00B7 9409             84      subb A,#9
+00B9 602D             85     jz hienthi9
+00BB                  86       hienthi0: 
+00BB 8549A0           87       mov p2,0x49
+00BE 01EB             88       ajmp ketthuc
+00C0                  89       hienthi1: 
+00C0 8579A0           90       mov p2,0x79
+00C3 01EB             91       ajmp ketthuc
+00C5                  92       hienthi2: 
+00C5 8524A0           93       mov p2,0x24
+00C8 01EB             94       ajmp ketthuc
+00CA                  95       hienthi3: 
+00CA 8530A0           96       mov p2,0x30
+00CD 01EB             97       ajmp ketthuc
+00CF                  98       hienthi4: 
+00CF 8519A0           99       mov p2,0x19
+00D2 01EB            100       ajmp ketthuc
+00D4                 101       hienthi5: 
+00D4 8512A0          102       mov p2,0x12
+00D7 01EB            103       ajmp ketthuc
+00D9                 104       hienthi6: 
+00D9 8502A0          105       mov p2,0x02
+00DC 01EB            106       ajmp ketthuc
+00DE                 107       hienthi7: 
+00DE 8570A0          108       mov p2,0x70
+00E1 01EB            109       ajmp ketthuc
+00E3                 110       hienthi8: 
+00E3 8500A0          111       mov p2,0x00
+00E6 01EB            112       ajmp ketthuc
+00E8                 113       hienthi9: 
+00E8 8510A0          114       mov p2,0x10            
+00EB                 115       ketthuc:
+00EB 22              116     ret
+                     117     
+                     118     end
+A51 MACRO ASSEMBLER  LED7SEG                                                              06/06/2012 14:20:56 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CHECK. . . . . . .  C ADDR   003AH   A   
+HIENTHI. . . . . .  C ADDR   0044H   A   
+HIENTHI0 . . . . .  C ADDR   00BBH   A   
+HIENTHI1 . . . . .  C ADDR   00C0H   A   
+HIENTHI2 . . . . .  C ADDR   00C5H   A   
+HIENTHI3 . . . . .  C ADDR   00CAH   A   
+HIENTHI4 . . . . .  C ADDR   00CFH   A   
+HIENTHI5 . . . . .  C ADDR   00D4H   A   
+HIENTHI6 . . . . .  C ADDR   00D9H   A   
+HIENTHI7 . . . . .  C ADDR   00DEH   A   
+HIENTHI8 . . . . .  C ADDR   00E3H   A   
+HIENTHI9 . . . . .  C ADDR   00E8H   A   
+KETTHUC. . . . . .  C ADDR   00EBH   A   
+KET_THUC . . . . .  C ADDR   0092H   A   
+MAIN . . . . . . .  C ADDR   0030H   A   
+MAIN_LOOP. . . . .  C ADDR   0032H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3_0 . . . . . . .  B ADDR   00B0H.0 A   
+PROD_HIENTHI . . .  C ADDR   0093H   A   
+SO_1 . . . . . . .  C ADDR   004CH   A   
+SO_2 . . . . . . .  C ADDR   0054H   A   
+SO_3 . . . . . . .  C ADDR   005CH   A   
+SO_4 . . . . . . .  C ADDR   0064H   A   
+SO_5 . . . . . . .  C ADDR   006CH   A   
+SO_6 . . . . . . .  C ADDR   0074H   A   
+SO_7 . . . . . . .  C ADDR   007CH   A   
+SO_8 . . . . . . .  C ADDR   0084H   A   
+SO_9 . . . . . . .  C ADDR   008CH   A   
+TANG . . . . . . .  C ADDR   0039H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

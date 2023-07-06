@@ -1,0 +1,136 @@
+BL51 BANKED LINKER/LOCATER V6.02                                                        03/16/2012  17:54:37  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.02, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE baodong.obj TO bao dong
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  baodong.obj (BAODONG)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  bao dong (BAODONG)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0008H     UNIT         _DATA_GROUP_
+            IDATA   0010H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     00EBH     UNIT         ?PR?MAIN?BAODONG
+            CODE    00EEH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   bao dong (BAODONG)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?BAODONG
+
+?PR?MAIN?BAODONG               0008H    0008H
+
+
+
+SYMBOL TABLE OF MODULE:  bao dong (BAODONG)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        BAODONG
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  B:0080H.0       PUBLIC        P0_0
+  B:0090H.0       PUBLIC        P1_0
+  B:0080H.1       PUBLIC        P0_1
+BL51 BANKED LINKER/LOCATER V6.02                                                      03/16/2012  17:54:37  PAGE 2
+
+
+  B:0080H.2       PUBLIC        P0_2
+  B:00B0H.0       PUBLIC        P3_0
+  B:0080H.3       PUBLIC        P0_3
+  B:00B0H.7       PUBLIC        P3_7
+  C:0003H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00B8H         PUBLIC        IPL
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  -------         DO            
+  D:0004H         SYMBOL        phim_hd
+  D:0008H         SYMBOL        nut_n1
+  D:000AH         SYMBOL        nut_n2
+  D:000CH         SYMBOL        nut_n3
+  D:0004H         SYMBOL        nut_n4
+  D:0004H         SYMBOL        nut_button
+  D:0006H         SYMBOL        dem1
+  D:000EH         SYMBOL        temp
+  -------         ENDDO         
+  C:0003H         LINE#         10
+  C:0003H         LINE#         11
+  C:0003H         LINE#         13
+  C:0005H         LINE#         14
+  C:0005H         LINE#         15
+  C:0005H         LINE#         16
+  C:000AH         LINE#         17
+  C:000FH         LINE#         18
+  C:0011H         LINE#         19
+  C:0011H         LINE#         20
+  C:0016H         LINE#         21
+  C:0018H         LINE#         22
+  C:0023H         LINE#         23
+  C:0023H         LINE#         24
+  C:002BH         LINE#         25
+  C:002BH         LINE#         26
+  C:002EH         LINE#         27
+  C:0034H         LINE#         29
+  C:003DH         LINE#         30
+  C:0046H         LINE#         31
+  C:004FH         LINE#         32
+  C:0055H         LINE#         33
+  C:005BH         LINE#         34
+  C:005BH         LINE#         35
+  C:0067H         LINE#         36
+  C:0077H         LINE#         37
+  C:0077H         LINE#         38
+  C:007DH         LINE#         39
+  C:007DH         LINE#         40
+  C:008BH         LINE#         41
+  C:009BH         LINE#         42
+  C:009BH         LINE#         43
+  C:00A1H         LINE#         44
+  C:00A1H         LINE#         45
+  C:00AFH         LINE#         46
+  C:00BFH         LINE#         47
+BL51 BANKED LINKER/LOCATER V6.02                                                      03/16/2012  17:54:37  PAGE 3
+
+
+  C:00BFH         LINE#         48
+  C:00C3H         LINE#         49
+  C:00C3H         LINE#         50
+  C:00D1H         LINE#         51
+  C:00DCH         LINE#         52
+  C:00DCH         LINE#         53
+  C:00EBH         LINE#         55
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        BAODONG
+
+Program Size: data=17.0 xdata=0 code=250
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

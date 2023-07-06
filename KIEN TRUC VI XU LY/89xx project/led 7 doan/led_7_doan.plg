@@ -1,0 +1,27 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\dropbox\Giao trinh\8051\89xx project example\led 7 doan\led_7_doan.uvproj
+Project File Date:  05/02/2013
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling led_7_doan.c...
+LED_7_DOAN.C(8): warning C280: 'i': unreferenced local variable
+linking...
+Program Size: data=13.0 xdata=0 code=210
+creating hex file from "led_7_doan"...
+"led_7_doan" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+assembling asm_7_seg.asm...
+linking...
+Program Size: data=8.0 xdata=0 code=147
+creating hex file from "led_7_doan"...
+"led_7_doan" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=13.0 xdata=0 code=210
+creating hex file from "led_7_doan"...
+"led_7_doan" - 0 Error(s), 0 Warning(s).

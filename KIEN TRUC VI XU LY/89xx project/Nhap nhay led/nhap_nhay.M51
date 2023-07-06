@@ -1,0 +1,135 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        05/02/2013  19:17:19  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE nhap_nhay.obj TO nhap_nhay
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  nhap_nhay.obj (NHAP_NHAY)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?IMUL)
+
+
+LINK MAP OF MODULE:  nhap_nhay (NHAP_NHAY)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000AH     UNIT         _DATA_GROUP_
+            IDATA   0012H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0049H     UNIT         ?PR?MAIN?NHAP_NHAY
+            CODE    004CH     0035H     UNIT         ?PR?_LUYTHUA?NHAP_NHAY
+            CODE    0081H     001EH     UNIT         ?PR?_DELAY?NHAP_NHAY
+            CODE    009FH     0012H     UNIT         ?C?LIB_CODE
+            CODE    00B1H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   nhap_nhay (NHAP_NHAY)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?NHAP_NHAY
+
+?PR?MAIN?NHAP_NHAY             0008H    0006H
+  +--> ?PR?_LUYTHUA?NHAP_NHAY
+  +--> ?PR?_DELAY?NHAP_NHAY
+
+?PR?_LUYTHUA?NHAP_NHAY         000EH    0004H
+
+
+
+SYMBOL TABLE OF MODULE:  nhap_nhay (NHAP_NHAY)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        NHAP_NHAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/02/2013  19:17:19  PAGE 2
+
+
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:0054H         PUBLIC        _luythua
+  C:0087H         PUBLIC        _delay
+  C:0003H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00B8H         PUBLIC        IPL
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        i
+  D:000AH         SYMBOL        x
+  D:000CH         SYMBOL        t
+  -------         ENDDO         
+  C:0003H         LINE#         5
+  C:0003H         LINE#         6
+  C:0003H         LINE#         7
+  C:0009H         LINE#         8
+  C:0009H         LINE#         9
+  C:0009H         LINE#         10
+  C:000CH         LINE#         11
+  C:0029H         LINE#         12
+  -------         ENDPROC       MAIN
+  -------         PROC          L?0023
+  -------         ENDPROC       L?0023
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        time
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:0087H         LINE#         49
+  C:0087H         LINE#         50
+  C:0087H         LINE#         51
+  C:009EH         LINE#         53
+  -------         ENDPROC       _DELAY
+  -------         PROC          L?0022
+  -------         ENDPROC       L?0022
+  -------         PROC          _LUYTHUA
+  D:000EH         SYMBOL        a
+  D:0010H         SYMBOL        b
+  -------         DO            
+  D:0006H         SYMBOL        x
+  D:0002H         SYMBOL        k
+  -------         ENDDO         
+  C:0054H         LINE#         55
+  C:005CH         LINE#         56
+  C:005CH         LINE#         57
+  C:0060H         LINE#         58
+  C:0080H         LINE#         59
+  C:0080H         LINE#         60
+  -------         ENDPROC       _LUYTHUA
+  -------         ENDMOD        NHAP_NHAY
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/02/2013  19:17:19  PAGE 3
+
+
+
+  -------         MODULE        ?C?IMUL
+  C:009FH         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 009CH BYTE ( 7%) *
+******************************************************************************
+
+Program Size: data=19.0 xdata=0 code=189
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

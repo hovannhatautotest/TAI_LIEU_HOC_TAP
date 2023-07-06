@@ -1,0 +1,1 @@
+"..\..\AT89_ASM code\tryen nhan noi tiep.asm" SET (SMALL) DEBUG PRINT(.\tryen nhan noi tiep.lst) OBJECT(.\tryen nhan noi tiep.obj) EP

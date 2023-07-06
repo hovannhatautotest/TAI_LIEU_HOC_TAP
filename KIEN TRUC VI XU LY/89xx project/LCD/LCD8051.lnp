@@ -1,0 +1,3 @@
+"STARTUP.obj",
+"LCD8051.obj" 
+TO "LCD8051" 

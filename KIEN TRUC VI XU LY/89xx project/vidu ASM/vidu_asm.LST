@@ -1,0 +1,68 @@
+A51 MACRO ASSEMBLER  VIDU_ASM                                                             06/02/2012 08:18:44 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.00b
+OBJECT MODULE PLACED IN vidu_asm.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE vidu_asm.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;sbit led1
+0000                   2     org 0x00
+0000 0130              3     ajmp main
+                       4     
+                       5     
+0030                   6     org 0x30
+0030                   7     main:
+0030 75A000            8             mov P2,#0x00
+0033                   9             main_loop:
+0033 75A001           10                     mov P2,#1
+0036 115D             11                 acall delay
+0038 75A003           12                     mov P2,#3
+003B 115D             13                     acall delay
+003D 75A007           14                     mov P2,#7
+0040 115D             15                 acall delay
+0042 75A00F           16                     mov P2,#15
+0045 115D             17                     acall delay
+0047 75A01F           18                     mov P2,#31
+004A 115D             19                 acall delay
+004C 75A03F           20                     mov P2,#63
+004F 115D             21                     acall delay
+0051 75A07F           22                     mov P2,#127
+0054 115D             23                 acall delay
+0056 75A0FF           24                     mov P2,#255
+0059 115D             25                     acall delay
+005B 80D6             26             sjmp main_loop
+                      27     
+005D                  28     delay:
+005D 780A             29     mov R0,#10
+005F 7946             30     mov R1,#70
+0061                  31     loop0:
+0061                  32     loop1:
+0061 00               33             nop
+0062 00               34             nop
+0063 00               35             nop
+0064 D8FB             36             djnz R0,loop1
+0066 D9F9             37     djnz R1,loop0
+0068 22               38     ret
+                      39     end
+A51 MACRO ASSEMBLER  VIDU_ASM                                                             06/02/2012 08:18:44 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   005DH   A   
+LOOP0. . . . . . .  C ADDR   0061H   A   
+LOOP1. . . . . . .  C ADDR   0061H   A   
+MAIN . . . . . . .  C ADDR   0030H   A   
+MAIN_LOOP. . . . .  C ADDR   0033H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

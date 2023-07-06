@@ -1,0 +1,66 @@
+#include <reg52x2.h>
+#define DVI P3_1
+#define CHUC P3_0
+
+delay(int time);
+
+hien_thi (int number);
+
+void main(void)
+{   int phim_nhan,so_dem,d_vi,hang_chuc,i;
+
+so_dem = 0;
+
+while(1)
+{
+	hang_chuc = so_dem/10;
+	d_vi = so_dem - (hang_chuc*10);
+	for (i=1;i<30;i++)
+	{
+	DVI = 1;
+	CHUC = 0;
+	hien_thi(d_vi);
+	}
+	for (i=1;i<30;i++)
+	{
+	CHUC = 1;
+	DVI = 0;
+	hien_thi(hang_chuc);
+	}
+
+    phim_nhan = P1_0;
+    if (phim_nhan == 0)
+	{ 
+	so_dem = so_dem+1;
+	if (so_dem >99) so_dem = 0;
+	while (phim_nhan == 0) phim_nhan = P1_0;
+	}
+
+}
+
+}
+
+hien_thi (int number)
+{
+	switch (number)
+	{
+	 	case 0: P2 = 0x40;break;
+		case 1: P2 = 0x79;break;
+		case 2: P2 = 0x24;break;
+		case 3: P2 = 0x30 ;break;
+	 	case 4: P2 = 0x19;break;
+		case 5: P2 = 0x12;break;
+		case 6: P2 = 0x02;break;
+		case 7: P2 = 0x78 ;break;
+		case 8: P2 = 0x00;break;
+		case 9: P2 = 0x10 ;break;
+	}
+	P2 = 0xff;
+}
+
+delay(int time)
+{
+    int k,l;
+    for(k=1;k<time;k++)
+    for(l=1;l<time;l++);
+}

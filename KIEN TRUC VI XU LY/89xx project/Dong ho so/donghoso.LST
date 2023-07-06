@@ -1,0 +1,218 @@
+C51 COMPILER V9.01   DONGHOSO                                                              12/08/2020 23:39:25 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE DONGHOSO
+OBJECT MODULE PLACED IN donghoso.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE donghoso.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          #include <reg52x2.h>
+   3          #define mode P3_0
+   4          #define shift P3_1
+   5          #define inc P3_2
+   6          #define dec P3_3
+   7          #define bset P3_4
+   8          
+   9          static unsigned long tran = 0;
+  10          int i,j,vtri[4];
+  11          int ms,s,min,hour,num[4],settime[4];
+  12          int sw_mode,sw_shift,sw_inc,sw_dec,sw_set, chedo,set,pos;
+  13          void hien_thi (int number);
+  14          
+  15          void timer1_ISR (void) interrupt 3
+  16          {
+  17   1              tran++;   /* Increment the overflow count */
+  18   1              if (tran==20000)
+  19   1              {
+  20   2               s++;
+  21   2               tran = 0;
+  22   2               if (s==60)
+  23   2                      {
+  24   3                       s=0;
+  25   3                       min++;
+  26   3                       if (min==60)
+  27   3                              {
+  28   4                                      min=0;  
+  29   4                              }                       
+  30   3                      }
+  31   2              }
+  32   1      }
+  33          
+  34          
+  35          void main(void)
+  36          {   
+  37   1      
+  38   1      TMOD = ((TMOD & 0x0F) | 0x20);  /* Set Mode (8-bit timer with reload) */
+  39   1      TH1 = 256 - 100;              /* Reload TL1 to count 100 clocks */
+  40   1      TL1 = TH1;
+  41   1      ET1 = 1;                      /* Enable Timer 1 Interrupts */
+  42   1      TR1 = 1;                      /* Start Timer 1 Running */
+  43   1      EA = 1;                       /* Global Interrupt Enable */
+  44   1      
+  45   1      //hien_thi(so_dem);
+  46   1      vtri[0] = 8;
+  47   1      vtri[1] = 4;
+  48   1      vtri[2] = 2;
+  49   1      vtri[3] = 1;
+  50   1      set = 0;
+  51   1      for (i=0;i<4;i++) settime[i]=0;
+  52   1      while(1)
+  53   1      {
+  54   2      /*hien thi gio hoac dat gio*/
+  55   2      
+C51 COMPILER V9.01   DONGHOSO                                                              12/08/2020 23:39:25 PAGE 2   
+
+  56   2          num[0] = s%10; //don vi giay
+  57   2              num[1] = s/10; //hang chuc giay 
+  58   2              num[2] = min%10;
+  59   2              num[3] = min/10;
+  60   2      
+  61   2              if (set == 0)
+  62   2              {
+  63   3                      for (i = 0;i<4;i++)
+  64   3                      {
+  65   4                              for (j=0;j<10;j++)
+  66   4                              {
+  67   5                                      P2 = vtri[i];
+  68   5                                      hien_thi(num[i]);
+  69   5                              }
+  70   4                      }
+  71   3              }
+  72   2              else 
+  73   2              {
+  74   3                      if(s%2==0)
+  75   3                      {
+  76   4                              for (i = 0;i<4;i++)
+  77   4                              {
+  78   5                                      for (j=0;j<10;j++)
+  79   5                                      {
+  80   6                                              if (i!=pos)
+  81   6                                              {
+  82   7                                                      P2 = vtri[i];
+  83   7                                                      hien_thi(settime[i]);
+  84   7                                              }
+  85   6                                      }
+  86   5                              }
+  87   4                      }
+  88   3                      else
+  89   3                      {
+  90   4                              for (i = 0;i<4;i++)
+  91   4                              {
+  92   5                                      for (j=0;j<10;j++)
+  93   5                                      {
+  94   6                                              P2 = vtri[i];
+  95   6                                              hien_thi(settime[i]);
+  96   6                                      }
+  97   5                              }
+  98   4                      }
+  99   3              }
+ 100   2      
+ 101   2      /*nut chuyen che do*/
+ 102   2              sw_mode = mode;
+ 103   2          if (sw_mode == 0)
+ 104   2              { 
+ 105   3                      if (chedo == 0) chedo = 0; else chedo = 1;
+ 106   3                      while (sw_mode==0)sw_mode = mode;
+ 107   3              }
+ 108   2      
+ 109   2      
+ 110   2      /*nut dat gio*/
+ 111   2              sw_set = bset;
+ 112   2          if (sw_set == 0)
+ 113   2              { 
+ 114   3                      if (set == 0) 
+ 115   3                      {
+ 116   4                              set = 1;
+ 117   4                              pos = 0;
+C51 COMPILER V9.01   DONGHOSO                                                              12/08/2020 23:39:25 PAGE 3   
+
+ 118   4                      }
+ 119   3                      else 
+ 120   3                      {
+ 121   4                              set = 0;
+ 122   4                              s = settime[1]*10 + settime[0];
+ 123   4                              min = settime[3]*10 + settime[2];
+ 124   4                      }
+ 125   3                      while (sw_set==0)sw_set = bset;
+ 126   3              }
+ 127   2      
+ 128   2      /*nut dich chuyen vi tri*/
+ 129   2          sw_shift = shift;
+ 130   2              if (sw_shift == 0)
+ 131   2              { 
+ 132   3                      pos++;
+ 133   3                      if (pos>4) pos = 0;
+ 134   3                      while (sw_shift==0)sw_shift = shift;
+ 135   3              }
+ 136   2              
+ 137   2      /*nut tang*/
+ 138   2              sw_inc = inc;
+ 139   2          if (sw_inc == 0)
+ 140   2              {       
+ 141   3                      settime[pos]++;
+ 142   3                      switch (pos)
+ 143   3                      {
+ 144   4                              case 0: if (settime[0]>9) settime[0]=0;break;   
+ 145   4                              case 1: if (settime[1]>5) settime[1]=0;break;
+ 146   4                              case 2: if (settime[2]>9) settime[2]=0;break;
+ 147   4                              case 3: if (settime[3]>5) settime[3]=0;break;
+ 148   4                      }
+ 149   3                      while (sw_inc==0)sw_inc = inc;
+ 150   3              }
+ 151   2              
+ 152   2      /*nut giam*/
+ 153   2              sw_dec = dec;
+ 154   2          if (sw_dec == 0)
+ 155   2              {       
+ 156   3                      settime[pos]--;
+ 157   3                      switch (pos)
+ 158   3                      {
+ 159   4                              case 0: if (settime[0]<0) settime[0]=9;break;   
+ 160   4                              case 1: if (settime[1]<0) settime[1]=5;break;
+ 161   4                              case 2: if (settime[2]<0) settime[2]=9;break;
+ 162   4                              case 3: if (settime[3]<0) settime[3]=5;break;
+ 163   4                      }
+ 164   3                      while (sw_dec==0)sw_dec = dec;
+ 165   3              }                               
+ 166   2      
+ 167   2      }
+ 168   1      
+ 169   1      }
+ 170          
+ 171          void hien_thi (int number)
+ 172          {
+ 173   1              switch (number)
+ 174   1              {
+ 175   2                      case 0: P1 = 0x40;break;
+ 176   2                      case 1: P1 = 0x79;break;
+ 177   2                      case 2: P1 = 0x24;break;
+ 178   2                      case 3: P1 = 0x30 ;break;
+ 179   2                      case 4: P1 = 0x19;break;
+C51 COMPILER V9.01   DONGHOSO                                                              12/08/2020 23:39:25 PAGE 4   
+
+ 180   2                      case 5: P1 = 0x12;break;
+ 181   2                      case 6: P1 = 0x02;break;
+ 182   2                      case 7: P1 = 0x78 ;break;
+ 183   2                      case 8: P1 = 0x00;break;
+ 184   2                      case 9: P1 = 0x10 ;break;
+ 185   2              }
+ 186   1      
+ 187   1              P1 = 0xff;
+ 188   1      //      P2 = 0;
+ 189   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1076    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     56    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

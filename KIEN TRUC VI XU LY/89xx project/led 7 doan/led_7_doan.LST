@@ -1,0 +1,83 @@
+C51 COMPILER V9.02   LED_7_DOAN                                                            05/06/2013 18:25:24 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE LED_7_DOAN
+OBJECT MODULE PLACED IN led_7_doan.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE led_7_doan.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52x2.h>
+   2          
+   3          //void delay(int time);
+   4          
+   5          void hien_thi(int number);
+   6          
+   7          void main(void)
+   8          {       int i,j,button1,button2;
+   9   1              j = 0;
+  10   1              
+  11   1              while (1)
+  12   1              {       
+  13   2                      button1 = P3_0;
+  14   2                      button2 = P3_1;
+  15   2                      if (button1==0)
+  16   2                      {
+  17   3                              j++;
+  18   3                              if (j==10) j=0;
+  19   3                              while (button1 == 0) button1 = P3_0;
+  20   3                      }
+  21   2                      
+  22   2                      if (button2==0)
+  23   2                      {
+  24   3                              j--;
+  25   3                              if (j<0) j=9;
+  26   3                              while (button2 == 0) button2 = P3_1;
+  27   3                      }
+  28   2                      hien_thi(j);
+  29   2              }
+  30   1      }
+*** WARNING C280 IN LINE 8 OF LED_7_DOAN.C: 'i': unreferenced local variable
+  31          
+  32          void hien_thi (int number)
+  33          {
+  34   1              switch (number)
+  35   1              {
+  36   2                      case 0: P2 = 0x40;break;
+  37   2                      case 1: P2 = 0x79;break;
+  38   2                      case 2: P2 = 0x24;break;
+  39   2                      case 3: P2 = 0x30 ;break;
+  40   2                      case 4: P2 = 0x19;break;
+  41   2                      case 5: P2 = 0x12;break;
+  42   2                      case 6: P2 = 0x02;break;
+  43   2                      case 7: P2 = 0x78 ;break;
+  44   2                      case 8: P2 = 0x00;break;
+  45   2                      case 9: P2 = 0x10 ;break;
+  46   2              }
+  47   1              P2 = 0xff;
+  48   1      }
+  49           
+  50          /*
+  51          void delay(int time)
+  52          {
+  53              int k,l;
+  54              for(k=1;k<time;k++)
+C51 COMPILER V9.02   LED_7_DOAN                                                            05/06/2013 18:25:24 PAGE 2   
+
+  55              for(l=1;l<time;l++);
+  56          }
+  57          */
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    195    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

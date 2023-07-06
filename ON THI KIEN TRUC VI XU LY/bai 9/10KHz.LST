@@ -1,0 +1,77 @@
+A51 MACRO ASSEMBLER  10KHZ                                                                01/06/2021 10:21:05 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN 10KHz.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 10KHz.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+0000                   2     org 00h
+                       3     
+0000                   4     main:
+0000 758901            5             mov tmod,#01h
+                       6     
+0003 1105              7             call loop1
+                       8     
+                       9     
+                      10     
+                      11     
+0005                  12     loop1:
+0005 B291             13             CPL P1.1
+0007 111F             14             ACALL DELAY200mS
+0009 80FA             15             jmp loop1
+                      16     
+000B                  17     DELAY10mS:
+000B 780A             18             MOV R0,#10
+                      19     
+000D                  20     DELAY1mS:
+000D 758CF8           21             MOV TH0,#0F8h  ;65536-2000
+0010 758A03           22             MOV TL0,#3h
+0013 D28C             23             SETB TR0
+0015 308DFD           24             JNB TF0,$
+0018 C28C             25             CLR TR0
+001A C28D             26             CLR TF0
+001C D8EF             27             DJNZ R0,DELAY1mS
+001E 22               28             RET
+                      29     
+001F                  30     DELAY200mS:
+001F 79C8             31             MOV R1,#200
+                      32     
+0021                  33     DELAY1mS2:
+0021 758CF8           34             MOV TH0,#0F8h  ;65536-2000
+0024 758A03           35             MOV TL0,#3h
+0027 D28C             36             SETB TR0
+0029 308DFD           37             JNB TF0,$
+002C C28C             38             CLR TR0
+002E C28D             39             CLR TF0
+0030 D9EF             40             DJNZ R1,DELAY1mS2
+0032 22               41             RET
+                      42     END
+A51 MACRO ASSEMBLER  10KHZ                                                                01/06/2021 10:21:05 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY10MS. . . . .  C ADDR   000BH   A   
+DELAY1MS . . . . .  C ADDR   000DH   A   
+DELAY1MS2. . . . .  C ADDR   0021H   A   
+DELAY200MS . . . .  C ADDR   001FH   A   
+LOOP1. . . . . . .  C ADDR   0005H   A   
+MAIN . . . . . . .  C ADDR   0000H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,52 @@
+A51 MACRO ASSEMBLER  BAI4                                                                 01/05/2021 19:58:16 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN bai4.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE bai4.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;tao xung co tan so 5kHz do rong 50% 2kHz-> chu ki T = 5ms->muc cao = muc thap = 2500us
+0000                   2     org 00h
+                       3     
+0000                   4     main:
+0000 758901            5             mov tmod,#01h
+                       6     
+0003                   7     loop:
+0003 B290              8             CPL P1.0
+0005 1109              9             ACALL DELAY1mS
+0007 80FA             10             jmp loop
+                      11     
+0009                  12     DELAY1mS:
+0009 758CF6           13             MOV TH0,#0F6h  ;65536-2500
+000C 758A3C           14             MOV TL0,#3Ch
+000F D28C             15             SETB TR0
+0011 308DFD           16             JNB TF0,$
+0014 C28C             17             CLR TR0
+0016 C28D             18             CLR TF0
+0018 22               19     RET
+                      20     END
+A51 MACRO ASSEMBLER  BAI4                                                                 01/05/2021 19:58:16 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY1MS . . . . .  C ADDR   0009H   A   
+LOOP . . . . . . .  C ADDR   0003H   A   
+MAIN . . . . . . .  C ADDR   0000H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

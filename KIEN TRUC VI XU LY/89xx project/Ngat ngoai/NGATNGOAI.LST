@@ -1,0 +1,115 @@
+A51 MACRO ASSEMBLER  NGATNGOAI                                                            05/06/2013 17:52:31 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN NGATNGOAI.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE NGATNGOAI.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+  0091                 1     P1_1 bit 0x91
+                       2     
+                       3     
+0000                   4     org 0x00
+0000 0130              5     ajmp main_m
+                       6     
+0003                   7     org 0x03
+0003 0165              8     ajmp ngat_ngoai
+                       9     
+0013                  10     org 0x13
+0013                  11      ngat_ngoai_1:
+0013 7590FF           12        mov P1,#255
+0016 32               13        reti
+                      14     
+0030                  15     org 0x30
+0030                  16     main_m:
+0030 D2AF             17     setb EA
+0032 D2A8             18     setb EX0
+0034 D2AA             19     setb EX1
+                      20     ;setb IT0
+0036                  21     main:
+0036 759000           22     mov P1,#0x00
+0039 1193             23     acall delay
+003B 759001           24     mov P1,#0x01
+003E 1193             25     acall delay
+0040 759003           26     mov P1,#0x03
+0043 1193             27     acall delay
+0045 759007           28     mov P1,#0x07
+0048 1193             29     acall delay
+004A 75900F           30     mov P1,#15
+004D 1193             31     acall delay
+004F 75901F           32     mov P1,#31
+0052 1193             33     acall delay
+0054 75903F           34     mov P1,#63
+0057 1193             35     acall delay
+0059 75907F           36     mov P1,#127
+005C 1193             37     acall delay
+005E 7590FF           38     mov P1,#255
+0061 1193             39     acall delay
+0063 0136             40     ajmp main
+                      41     
+                      42     ;Chuong trinh phuc vu ngat
+0065                  43     ngat_ngoai:
+0065 759000           44     mov P1,#0x00
+0068 1193             45     acall delay
+006A 759001           46     mov P1,#0x01
+006D 1193             47     acall delay
+006F 759002           48     mov P1,#0x02
+0072 1193             49     acall delay
+0074 759004           50     mov P1,#0x04
+0077 1193             51     acall delay
+0079 759008           52     mov P1,#0x08
+007C 1193             53     acall delay
+007E 759010           54     mov P1,#16
+0081 1193             55     acall delay
+0083 759020           56     mov P1,#32
+0086 1193             57     acall delay
+0088 759040           58     mov P1,#64
+A51 MACRO ASSEMBLER  NGATNGOAI                                                            05/06/2013 17:52:31 PAGE     2
+
+008B 1193             59     acall delay
+008D 759080           60     mov P1,#128
+0090 1193             61     acall delay
+0092 32               62     reti
+                      63     
+                      64     ;Chuong trinh con
+0093                  65     delay:
+0093 79FF             66     mov R1,#255
+0095 7864             67     MOV R0,#100
+0097                  68     lap1:
+0097                  69     lap: 
+0097 00               70             nop
+0098 00               71             nop
+0099 00               72             nop
+009A D9FB             73             djnz R1,lap
+009C D8F9             74     djnz R0,lap1
+009E 22               75     ret
+                      76     
+                      77     ;Ket thuc chuong trinh
+                      78     end 
+A51 MACRO ASSEMBLER  NGATNGOAI                                                            05/06/2013 17:52:31 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0093H   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+EX0. . . . . . . .  B ADDR   00A8H.0 A   
+EX1. . . . . . . .  B ADDR   00A8H.2 A   
+LAP. . . . . . . .  C ADDR   0097H   A   
+LAP1 . . . . . . .  C ADDR   0097H   A   
+MAIN . . . . . . .  C ADDR   0036H   A   
+MAIN_M . . . . . .  C ADDR   0030H   A   
+NGAT_NGOAI . . . .  C ADDR   0065H   A   
+NGAT_NGOAI_1 . . .  C ADDR   0013H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P1_1 . . . . . . .  B ADDR   0090H.1 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

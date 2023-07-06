@@ -1,0 +1,24 @@
+;TAO KHOANG THOI GIAN CHO DUNG BANG 50MS DOI VOI THACH ANH 12MHz
+		org 00h
+
+		main:
+			mov tmod,#01h
+
+		loop:
+			CPL P1.0
+			ACALL DELAY50mS
+			jmp loop
+
+		DELAY50mS:
+			MOV R0,#50
+		
+		DELAY1mS:
+				MOV TH0,#0FCh  ;65536-1000
+				MOV TL0,#18h
+				SETB TR0
+				JNB TF0,$
+				CLR TR0
+				CLR TF0
+				DJNZ R0,DELAY1mS
+			RET
+END

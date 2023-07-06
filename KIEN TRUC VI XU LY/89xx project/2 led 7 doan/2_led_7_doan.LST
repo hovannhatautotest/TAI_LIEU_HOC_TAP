@@ -1,0 +1,106 @@
+C51 COMPILER V9.02   2_LED_7_DOAN                                                          05/07/2020 16:27:04 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE 2_LED_7_DOAN
+OBJECT MODULE PLACED IN 2_led_7_doan.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE 2_led_7_doan.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+*** WARNING C500 IN LINE 1 OF 2_LED_7_DOAN.C: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
+
+   1          #include <reg52x2.h>
+   2          #define DVI P3_1
+   3          #define CHUC P3_0
+   4          #define tang P1_1
+   5          #define giam P1_0
+   6          
+   7          //delay(int time);
+   8          
+   9          hien_thi(int number);
+  10          
+  11          void main(void)
+  12          {   int phim_tang, phim_giam,sodem,d_vi,hang_chuc,i;
+  13   1      
+  14   1      sodem = 0;
+  15   1      
+  16   1      while(1)
+  17   1      {
+  18   2              phim_tang = tang;
+  19   2              if(phim_tang == 0)
+  20   2              {
+  21   3                      sodem++;
+  22   3                      if (sodem ==100) sodem=99;
+  23   3                      while (phim_tang == 0) phim_tang = tang;
+  24   3              }
+  25   2              phim_giam = giam; //lay tu P1_0
+  26   2              if(phim_giam == 0)
+  27   2              {
+  28   3                      sodem--;
+  29   3                      if (sodem<0) sodem=0;
+  30   3              //      while (phim_giam == 0) phim_giam = giam;
+  31   3              }
+  32   2              
+  33   2              hang_chuc = sodem/10;
+  34   2              d_vi = sodem - (hang_chuc*10);  //d_vi = so_dem%10
+  35   2              //hang_tram = sodem/100;
+  36   2              //hang_chuc = (sodem - (100*hang_tram))/10;
+  37   2              //d_vi =
+  38   2              for (i=1;i<100;i++)
+  39   2              {
+  40   3                      DVI = 1;
+  41   3                      CHUC = 0;
+  42   3                      hien_thi(d_vi);
+  43   3              }
+  44   2              for (i=1;i<100;i++)
+  45   2              {
+  46   3                      CHUC = 1;
+  47   3                      DVI = 0;
+  48   3                      hien_thi(hang_chuc);
+  49   3              }
+  50   2      
+  51   2      }
+  52   1      
+  53   1      }
+  54          
+C51 COMPILER V9.02   2_LED_7_DOAN                                                          05/07/2020 16:27:04 PAGE 2   
+
+  55          hien_thi (int number)
+  56          {
+  57   1              switch (number)
+  58   1              {
+  59   2                      case 0: P2 = 0x40;break;
+  60   2                      case 1: P2 = 0x79;break;
+  61   2                      case 2: P2 = 0x24;break;
+  62   2                      case 3: P2 = 0x30 ;break;
+  63   2                      case 4: P2 = 0x19;break;
+  64   2                      case 5: P2 = 0x12;break;
+  65   2                      case 6: P2 = 0x02;break;
+  66   2                      case 7: P2 = 0x78 ;break;
+  67   2                      case 8: P2 = 0x00;break;
+  68   2                      case 9: P2 = 0x10 ;break;
+  69   2              }
+  70   1              P2 = 0xff;
+  71   1      }
+  72          
+  73          //delay(int time)
+  74          //{
+  75          //    int k,l;
+  76          //    for(k=1;k<time;k++)
+  77          //    for(l=1;l<time;l++);
+  78          //}
+*** WARNING C290 IN LINE 71 OF 2_LED_7_DOAN.C: missing return value
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    281    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)

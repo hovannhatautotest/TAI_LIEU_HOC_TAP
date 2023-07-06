@@ -1,0 +1,50 @@
+A51 MACRO ASSEMBLER  BAI7                                                                 01/07/2021 08:53:14 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN bai7.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE bai7.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+                       2     
+0000                   3                     ORG 00H
+0000 900015            4                             MOV DPTR,#MALED
+0003                   5                     reset:
+0003 7809              6                             mov R0,#9
+0005                   7                     main:
+0005 E8                8                             MOV A,R0
+0006 93                9                             MOVC A,@A+DPTR
+0007 F580             10                             MOV P0,A
+0009 20A7FD           11                             jb P2.7,$
+000C 30A7FD           12                             jnb P2.7,$
+000F 18               13                             dec R0
+0010 B800F2           14                             CJNE R0,#0,main
+0013 80EE             15                             jmp reset
+                      16     
+0015                  17                     MALED:
+0015 01F9A4B0         18                             DB 01H,0F9H,0A4H,0B0H,99H,92H,82H,0F8H,80H,010H
+0019 999282F8                
+001D 8010                    
+                      19                     
+                      20     END
+A51 MACRO ASSEMBLER  BAI7                                                                 01/07/2021 08:53:14 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+MAIN . . . . . . .  C ADDR   0005H   A   
+MALED. . . . . . .  C ADDR   0015H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+RESET. . . . . . .  C ADDR   0003H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

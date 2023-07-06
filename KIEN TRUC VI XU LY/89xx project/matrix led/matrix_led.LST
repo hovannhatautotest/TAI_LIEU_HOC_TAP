@@ -1,0 +1,66 @@
+C51 COMPILER V8.05a   MATRIX_LED                                                           10/17/2010 22:56:02 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE MATRIX_LED
+OBJECT MODULE PLACED IN matrix_led.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE matrix_led.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52x2.h>
+   2          #define hang P2
+   3          #define cot P3
+   4          
+   5          
+   6          void main(void)
+   7          {   int i,k;
+   8   1              int gt_hang[8], gt_cot[8];
+   9   1      
+  10   1      //for(i = 1;i<9;i++) gt_cot[i] = 2^(i-1);
+  11   1      
+  12   1      gt_cot[1] = 1;
+  13   1      gt_cot[2] = 2;
+  14   1      gt_cot[3] = 4;
+  15   1      gt_cot[4] = 8;
+  16   1      gt_cot[5] = 16;
+  17   1      gt_cot[6] = 32;
+  18   1      gt_cot[7] = 64;
+  19   1      gt_cot[8] = 128;
+  20   1      
+  21   1      gt_hang[1]= 0xfc;
+  22   1      gt_hang[2]= 0xfc;
+  23   1      gt_hang[3]= 0xfc;
+  24   1      gt_hang[4]= 0x00;
+  25   1      gt_hang[5]= 0x00;
+  26   1      gt_hang[6]= 0xfc;
+  27   1      gt_hang[7]= 0xfc;
+  28   1      gt_hang[8]= 0xfc;
+  29   1      
+  30   1      
+  31   1      while(1)
+  32   1      {
+  33   2              for (i=1;i<9;i++)
+  34   2              {
+  35   3                      for(k=0;k<10;k++)
+  36   3                      {
+  37   4                              cot = gt_cot[i];
+  38   4                              hang = gt_hang[i];
+  39   4                      }
+  40   3              }
+  41   2      }
+  42   1      
+  43   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    141    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      32
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

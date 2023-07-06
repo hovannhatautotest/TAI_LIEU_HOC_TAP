@@ -1,0 +1,86 @@
+C51 COMPILER V9.02   NHAP_NHAY                                                             05/02/2013 19:17:18 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE NHAP_NHAY
+OBJECT MODULE PLACED IN nhap_nhay.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE nhap_nhay.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52x2.h>
+   2          int luythua(a,b);
+   3          void delay(int time);
+   4          
+   5          void main()
+   6          {int i,x,t;
+   7   1              t = 1000;
+   8   1          while(1)
+   9   1          {
+  10   2                      P2 = 0;
+  11   2                      for (i=0;i<8;i++) {P2 = luythua(2,i);delay(t);}  //dich sang trai
+  12   2                      for (i=7;i>0;i--) {P2 = luythua(2,i);delay(t);}
+  13   2      /*              delay(t);
+  14   2                      x = 0;
+  15   2                      //den sang dan trai qua phai
+  16   2                      for(i=0;i<9;i++)
+  17   2                      {
+  18   2                              P1 = luythua(2,i)-1;
+  19   2                              delay(t);
+  20   2                      }
+  21   2                      //den tat dan tu trai qua phai
+  22   2              
+  23   2                      for(i=0;i<9;i++)
+  24   2                      {
+  25   2                              P1 = 256 - luythua(2,i);
+  26   2                              delay(t);
+  27   2                      }
+  28   2      
+  29   2                      P1 = 0;
+  30   2                      delay(t);
+  31   2                      //den sang dan tu phai qua trai                 
+  32   2                      for(i=0;i<8;i++)
+  33   2                      {
+  34   2                              x = x+luythua(2,7-i);
+  35   2                              P1 = x;
+  36   2                              delay(t);
+  37   2                      }
+  38   2                      //den tat dan tu phai qua trai
+  39   2                      for(i=0;i<8;i++)
+  40   2                      {
+  41   2                              P1 = 256/luythua(2,i)-1;
+  42   2                              delay(t);
+  43   2                      }
+  44   2                      */
+  45   2          }
+  46   1      
+  47   1      }
+*** WARNING C280 IN LINE 6 OF NHAP_NHAY.C: 'x': unreferenced local variable
+  48          
+  49          void delay(int time)
+  50          {int i;
+  51   1          for(i=0;i<time;i++);
+  52   1      
+  53   1      }
+  54          
+C51 COMPILER V9.02   NHAP_NHAY                                                             05/02/2013 19:17:18 PAGE 2   
+
+  55          int luythua(a,b)
+  56          {int x,k;
+  57   1              x = 1;
+  58   1              for(k=0;k<b;k++) x=x*a;
+  59   1              return(x);
+  60   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    156    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      10
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

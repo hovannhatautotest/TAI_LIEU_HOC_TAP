@@ -1,0 +1,62 @@
+A51 MACRO ASSEMBLER  UART                                                                 05/06/2013 18:02:13 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN uart.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE uart.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0x00
+0000 0130              2     ajmp main
+0030                   3     org 0x30
+0030                   4     main:
+0030 759852            5             mov SCON,#0x52
+0033 758920            6             mov TMOD,#0x20
+0036 758DFD            7             mov TH1,#253
+0039 858D8B            8             mov TL1,TH1
+                       9             ;setb EA; cho phep ngat toan cuc
+                      10             ;setb ET1; cho phep ngat cua bo dinh thoi
+003C D28E             11             setb TR1; cho bo dinh thoi 1 hoat dong
+003E D29C             12             setb REN; cho phep bo UART nhan du lieu
+                      13             ;wait_r: 
+                      14             ;       jnb RI,wait_r
+                      15             ;       clr RI
+0040                  16             main_loop:
+0040                  17                     wait_r: 
+0040 3098FD           18                     jnb RI,wait_r
+0043 C298             19                     clr RI
+0045 E599             20                     mov A,SBUF
+0047                  21                     wait_w:
+0047 3099FD           22                     jnb TI,wait_w
+004A C299             23                     clr TI
+004C F599             24                     mov SBUF,A
+004E 80F0             25             sjmp main_loop
+                      26     end
+A51 MACRO ASSEMBLER  UART                                                                 05/06/2013 18:02:13 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+MAIN . . . . . . .  C ADDR   0030H   A   
+MAIN_LOOP. . . . .  C ADDR   0040H   A   
+REN. . . . . . . .  B ADDR   0098H.4 A   
+RI . . . . . . . .  B ADDR   0098H.0 A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+WAIT_R . . . . . .  C ADDR   0040H   A   
+WAIT_W . . . . . .  C ADDR   0047H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,64 @@
+A51 MACRO ASSEMBLER  LOOP_ASM                                                             06/02/2012 09:48:38 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.00b
+OBJECT MODULE PLACED IN loop_asm.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE loop_asm.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;sbit led1
+0000                   2     org 0x00
+0000 0130              3     ajmp main
+                       4     
+                       5     
+0030                   6     org 0x30
+0030                   7     main:
+0030 75A000            8             mov P2,#0
+0033 7907              9             mov R1,#7
+0035                  10             main_loop:
+0035 7401             11                     mov A,#1
+0037                  12                     loop:
+0037 75F002           13                     mov     B,#2
+003A A4               14                     mul AB
+003B F8               15                     mov R0,A
+003C 18               16                     dec R0
+003D 88A0             17                     mov P2,R0
+003F 1145             18                     acall delay
+0041 D9F4             19                     djnz R1,loop
+0043 0135             20             ajmp main_loop
+                      21     
+0045                  22     delay:
+0045 780A             23     mov R0,#10
+0047 790A             24     mov R1,#10
+0049                  25     loop0:
+0049                  26     loop1:
+0049 00               27             nop
+004A 00               28             nop
+004B 00               29             nop
+004C D8FB             30             djnz R0,loop1
+004E D9F9             31     djnz R1,loop0
+0050 22               32     ret
+                      33     end
+A51 MACRO ASSEMBLER  LOOP_ASM                                                             06/02/2012 09:48:38 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+DELAY. . . . . . .  C ADDR   0045H   A   
+LOOP . . . . . . .  C ADDR   0037H   A   
+LOOP0. . . . . . .  C ADDR   0049H   A   
+LOOP1. . . . . . .  C ADDR   0049H   A   
+MAIN . . . . . . .  C ADDR   0030H   A   
+MAIN_LOOP. . . . .  C ADDR   0035H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,64 @@
+A51 MACRO ASSEMBLER  NHAPNHAY                                                             12/12/2020 23:48:01 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN nhapnhay.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE nhapnhay.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 00h
+                       2             
+0000                   3     MAIN:
+0000 B290              4             cpl p1.0
+0002 112C              5             call Delay
+0004 B291              6             cpl p1.1
+0006 112C              7             call Delay
+0008 B292              8             cpl p1.2
+000A 112C              9             call Delay
+000C B293             10             cpl p1.3
+000E 112C             11             call Delay
+0010 B294             12             cpl p1.4
+0012 112C             13             call Delay
+0014 B295             14             cpl p1.5
+0016 112C             15             call Delay
+0018 B296             16             cpl p1.6
+001A 112C             17             call Delay
+001C B297             18             cpl p1.7
+001E 112C             19             call Delay
+0020 7590FF           20             mov p1,#11111111B
+0023 112C             21             call Delay
+0025 759000           22             mov p1,#00000000B
+0028 112C             23             call Delay
+002A 80D4             24             jmp main
+                      25             
+002C                  26     Delay:
+002C 7905             27             mov r1,#5
+002E                  28     lap1:
+002E 7AC8             29             mov r2,#200
+0030                  30     lap2:
+0030 7BC8             31             mov r3,#200
+0032 DBFE             32             djnz r3,$
+0034 DAFA             33             djnz r2,lap2
+0036 D9F6             34             djnz r1,lap1
+0038 22               35     ret
+                      36     end
+A51 MACRO ASSEMBLER  NHAPNHAY                                                             12/12/2020 23:48:01 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   002CH   A   
+LAP1 . . . . . . .  C ADDR   002EH   A   
+LAP2 . . . . . . .  C ADDR   0030H   A   
+MAIN . . . . . . .  C ADDR   0000H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

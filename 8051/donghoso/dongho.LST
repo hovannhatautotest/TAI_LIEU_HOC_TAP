@@ -1,0 +1,78 @@
+A51 MACRO ASSEMBLER  DONGHO                                                               12/13/2020 01:18:07 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN dongho.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE dongho.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 00h
+0000 90003A            2             MOV DPTR,#maled
+0003                   3     RESET:
+0003 7800              4             MOV R0,#0
+0005                   5     MAIN:
+0005 1109              6             CALL HIENTHI1
+0007 80FA              7             JMP RESET
+0009                   8     HIENTHI1:
+0009 E8                9             MOV A,R0
+000A 75F00A           10             MOV B,#10
+000D 84               11             DIV AB
+000E 93               12             MOVC A,@A+DPTR
+000F F580             13             MOV P0,A
+0011 D2A5             14             SETB P2.5
+0013 C2A6             15             CLR P2.6
+0015 112D             16             CALL Delay
+0017 C2A5             17             CLR P2.5
+0019 E5F0             18             MOV A,B
+001B 93               19             MOVC A,@A+DPTR
+001C F580             20             MOV P0,A
+001E D2A6             21             SETB P2.6
+0020 C2A5             22             CLR P2.5
+0022 112D             23             CALL Delay
+0024 C2A6             24             CLR P2.6
+0026 112D             25             CALL Delay
+0028 08               26             INC R0
+0029 B83CD9           27             CJNE R0,#60,MAIN
+002C 22               28     ret
+                      29     
+                      30     
+002D                  31     Delay:
+002D 790A             32             mov r1,#10
+002F                  33     lap1:
+002F 7A0A             34             mov r2,#10
+0031                  35     lap2:
+0031 7B96             36             mov r3,#150
+0033 DBFE             37             djnz r3,$
+0035 DAFA             38             djnz r2,lap2
+0037 D9F6             39             djnz r1,lap1
+0039 22               40     ret
+003A                  41     maled:
+003A C0F9A4B0         42             DB 0C0H,0F9H,0A4H,0B0H,99H,92H,82H,0F8H,80H,90H
+003E 999282F8                
+0042 8090                    
+                      43     end
+A51 MACRO ASSEMBLER  DONGHO                                                               12/13/2020 01:18:07 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+DELAY. . . . . . .  C ADDR   002DH   A   
+HIENTHI1 . . . . .  C ADDR   0009H   A   
+LAP1 . . . . . . .  C ADDR   002FH   A   
+LAP2 . . . . . . .  C ADDR   0031H   A   
+MAIN . . . . . . .  C ADDR   0005H   A   
+MALED. . . . . . .  C ADDR   003AH   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+RESET. . . . . . .  C ADDR   0003H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

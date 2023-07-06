@@ -1,0 +1,114 @@
+A51 MACRO ASSEMBLER  2LED                                                                 05/03/2013 18:13:44 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN 2led.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE 2led.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+  00B0                 1     chuc BIT 0xB0
+  00B1                 2     dvi BIT 0xB1
+                       3     
+0000                   4     org 0x00
+0000 0130              5     ajmp main
+                       6     
+0030                   7     org 0x30
+0030                   8     main:
+0030 7411              9             mov A,#17
+0032 75F00A           10             mov B,#10
+0035 84               11             DIV AB
+                      12             
+                      13             ;main_loop:
+0036 7880             14                     mov R0,#128
+0038 7980             15                     mov R1,#128
+003A                  16                     lap1:
+003A D2B0             17                     setb chuc
+003C C2B1             18                     clr dvi
+003E 114E             19                     acall hienthi
+0040 D8F8             20                     djnz R0,lap1
+0042                  21                     lap2:
+0042 C2B0             22                     clr chuc
+0044 D2B1             23                     setb dvi
+0046 E5F0             24                     mov A,B
+0048 114E             25                     acall hienthi
+004A D9F6             26                     djnz R1,lap2            
+004C 80E2             27             sjmp main
+                      28     
+004E                  29     hienthi:
+004E B40005           30         CJNE A,#0,so_1
+0051 75A040           31         MOV P2,#0x40
+0054 019C             32         AJMP ket_thuc
+0056                  33         so_1:
+0056 B40105           34         CJNE A,#1,so_2
+0059 75A079           35         MOV P2,#0x79
+005C 019C             36         AJMP ket_thuc
+005E                  37         so_2:
+005E B40205           38         CJNE A,#2,so_3
+0061 75A024           39         MOV P2,#0x24
+0064 019C             40         AJMP ket_thuc
+0066                  41         so_3:
+0066 B40305           42         CJNE A,#3,so_4
+0069 75A030           43         MOV P2,#0x30
+006C 019C             44         AJMP ket_thuc
+006E                  45         so_4:
+006E B40405           46         CJNE A,#4,so_5
+0071 75A019           47         MOV P2,#0x19
+0074 019C             48         AJMP ket_thuc
+0076                  49         so_5:
+0076 B40505           50         CJNE A,#5,so_6
+0079 75A012           51         MOV P2,#0x12
+007C 019C             52         AJMP ket_thuc
+007E                  53         so_6:
+007E B40605           54         CJNE A,#6,so_7
+0081 75A002           55         MOV P2,#0x02
+0084 019C             56         AJMP ket_thuc
+0086                  57         so_7:
+0086 B40705           58         CJNE A,#7,so_8
+A51 MACRO ASSEMBLER  2LED                                                                 05/03/2013 18:13:44 PAGE     2
+
+0089 75A078           59         MOV P2,#0x78
+008C 019C             60         AJMP ket_thuc
+008E                  61         so_8:
+008E B40805           62         CJNE A,#8,so_9
+0091 75A000           63         MOV P2,#0x00
+0094 019C             64         AJMP ket_thuc
+0096                  65         so_9:
+0096 B40903           66         CJNE A,#9,ket_thuc
+0099 75A010           67         MOV P2,#0x10
+009C                  68         ket_thuc:
+009C 22               69     RET
+                      70     
+                      71     end  
+A51 MACRO ASSEMBLER  2LED                                                                 05/03/2013 18:13:44 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+CHUC . . . . . . .  B ADDR   00B0H.0 A   
+DVI. . . . . . . .  B ADDR   00B0H.1 A   
+HIENTHI. . . . . .  C ADDR   004EH   A   
+KET_THUC . . . . .  C ADDR   009CH   A   
+LAP1 . . . . . . .  C ADDR   003AH   A   
+LAP2 . . . . . . .  C ADDR   0042H   A   
+MAIN . . . . . . .  C ADDR   0030H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+SO_1 . . . . . . .  C ADDR   0056H   A   
+SO_2 . . . . . . .  C ADDR   005EH   A   
+SO_3 . . . . . . .  C ADDR   0066H   A   
+SO_4 . . . . . . .  C ADDR   006EH   A   
+SO_5 . . . . . . .  C ADDR   0076H   A   
+SO_6 . . . . . . .  C ADDR   007EH   A   
+SO_7 . . . . . . .  C ADDR   0086H   A   
+SO_8 . . . . . . .  C ADDR   008EH   A   
+SO_9 . . . . . . .  C ADDR   0096H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

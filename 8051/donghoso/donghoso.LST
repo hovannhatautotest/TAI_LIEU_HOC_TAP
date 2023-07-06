@@ -1,0 +1,38 @@
+A51 MACRO ASSEMBLER  DONGHOSO                                                             12/12/2020 22:59:00 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN donghoso.OBJ
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE donghoso.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org     00h
+                       2     
+0000                   3     MAIN:
+0000 C290              4             CLR P1.0
+0002 1106              5             CALL DELAY
+0004 80FA              6             JMP MAIN
+0006                   7     DELAY:
+0006 A964              8             MOV R1,100
+0008 D9FE              9             DJNZ R1,$
+000A 22               10     RET
+                      11     
+                      12     end
+A51 MACRO ASSEMBLER  DONGHOSO                                                             12/12/2020 22:59:00 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0006H   A   
+MAIN . . . . . . .  C ADDR   0000H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

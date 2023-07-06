@@ -1,0 +1,75 @@
+C51 COMPILER V8.05a   VIDU_POW                                                             06/02/2012 09:38:14 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE VIDU_POW
+OBJECT MODULE PLACED IN vidu_pow.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE vidu_pow.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52x2.h>
+   2          
+   3          
+   4          void delay(int x);
+   5          int luythua(int a,int b);
+   6          void main()
+   7          {int m,k,x;                             
+   8   1              P2=0x00;
+   9   1              k=40;
+  10   1              while(1)
+  11   1              {
+  12   2              /*
+  13   2              P2=0x00;
+  14   2              for(x=0;x<8;x++)
+  15   2              {
+  16   2                      P2=luythua(2,x)-1;
+  17   2                      delay(k);  
+  18   2              }
+  19   2              P2 = 0x00;
+  20   2              for(x=0;x<8;x++)
+  21   2              {
+  22   2                      P2=luythua(2,x);
+  23   2                      delay(k);  
+  24   2              }
+  25   2              */ 
+  26   2              m = 0;
+  27   2              for(x=7;x>-1;x--)
+  28   2              {
+  29   3                      
+  30   3                      m=m+luythua(2,x);
+  31   3                      P2 = m;
+  32   3                      delay(k);  
+  33   3              }
+  34   2      
+  35   2              }
+  36   1      }
+  37          
+  38          void delay(int x)
+  39          {int j,y;
+  40   1      for(y=0;y<x;y++) for(j=0;j<x;j++);
+  41   1      
+  42   1      }
+  43          
+  44          int luythua(int a, int b)
+  45          {int tam,x;
+  46   1       x=1;
+  47   1       for (tam=1;tam<=b;tam++) x=x*a;
+  48   1       return(x);
+  49   1      } 
+  50          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    165    ----
+   CONSTANT SIZE    =   ----    ----
+C51 COMPILER V8.05a   VIDU_POW                                                             06/02/2012 09:38:14 PAGE 2   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      10
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

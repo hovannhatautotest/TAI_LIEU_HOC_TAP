@@ -1,0 +1,29 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\Admin\Desktop\8051\cau1\cau1.uvproj
+Project File Date:  12/11/2020
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling cau1.asm...
+cau1.asm(14): error A45: UNDEFINED SYMBOL (PASS-2)
+Target not created
+Build target 'Target 1'
+assembling cau1.asm...
+linking...
+Program Size: data=8.0 xdata=0 code=25
+creating hex file from "cau1"...
+"cau1" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling cau1.asm...
+cau1.asm(14): error A45: UNDEFINED SYMBOL (PASS-2)
+Target not created
+Build target 'Target 1'
+assembling cau1.asm...
+linking...
+Program Size: data=8.0 xdata=0 code=25
+creating hex file from "cau1"...
+"cau1" - 0 Error(s), 0 Warning(s).

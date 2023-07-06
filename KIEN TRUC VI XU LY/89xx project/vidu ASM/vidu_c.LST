@@ -1,0 +1,52 @@
+C51 COMPILER V8.05a   VIDU_C                                                               06/02/2012 08:32:34 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE VIDU_C
+OBJECT MODULE PLACED IN vidu_c.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE vidu_c.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52x2.h>
+   2          #include <math.h>
+   3          
+   4          void delay(int x);
+   5          
+   6          void main()
+   7          {int k;                                 
+   8   1              
+   9   1              k=40;
+  10   1              while(1)
+  11   1              {
+  12   2                      P2 = 0;delay(k);
+  13   2                      P2 = 1;delay(k);
+  14   2                      P2 = 3;delay(k);
+  15   2                      P2 = 7;delay(k);
+  16   2                      P2 = 15;delay(k);
+  17   2                      P2 = 31;delay(k);
+  18   2                      P2 = 63;delay(k);
+  19   2                      P2 = 127;delay(k);
+  20   2                      P2 = 255;delay(k);
+  21   2              }
+  22   1      }
+  23          
+  24          void delay(int x)
+  25          {int j,y;
+  26   1      for(y=0;y<x;y++) for(j=0;j<x;j++);
+  27   1      
+  28   1      }
+  29          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    113    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

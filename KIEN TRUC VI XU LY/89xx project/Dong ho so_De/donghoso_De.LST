@@ -1,0 +1,207 @@
+C51 COMPILER V8.05a   DONGHOSO_DE                                                          06/07/2012 08:22:29 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE DONGHOSO_DE
+OBJECT MODULE PLACED IN donghoso_De.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE donghoso_De.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /**************************************************************************************************
+   2                  DESIGNED BY:Pham Van De --DHKH--dien tu vien thong k32
+   3                  MO TA: DONG HO SU DUNG TIMER
+   4                  KET NOI PHAN CUNG: DATA LED 7 DOAN = P0
+   5                                                          P2 QUET LED 7 DOAN; SU DUNG 6 LED 7 DOAN GIO : PHUT : GIAY 
+   6                                                           led 7segment chung anode
+   7                                                           Dieu chinh gio -phut -giay bang cach thay doi code ko dung phim nhan
+   8                  THACH ANH: 12MHZ 
+   9                  VI DIEU KHIEN: AT89C51  
+  10                  Contact: depham90@gmail.com
+  11                  thoi gian hoan thanh:26/4/2011
+  12          /************KHAI BAO THU VIEN, DINH NGHIA********************************************************/
+  13          #include <REGX51.H>             
+  14          /************KHAI BAO BIEN, MANG...***************************************************************/
+  15          unsigned char led7_data[10] = {0x40,0x79,0x24,0x30,0x19,0x12,0x2,0x78,0x0,0x10};           // lan luot tu 0 den 9
+  16          unsigned char gio,phut,giay;
+  17          unsigned char time, i,index,dem;
+  18                          int            j,k;
+  19                                                                   
+  20          sbit    tang_giay=P3^2;
+  21          sbit    tang_phut=P3^1;
+  22          sbit    tang_gio=P3^0;
+  23          /************KHAI BAO HAM, CHUONG TRINH CON*******************************************************/
+  24                  // Chuong trinh khoi tao main
+  25          void set_main(void);
+  26                  // Chuong trinh cai dat timer 1 va 0 
+  27          void setup_timer(void);
+  28          //   chuong trinh dieu chinh gio-phut-giay khi tang hoac giam
+  29           void Fix_time(void);
+  30           void Keypad(void) ;// Kiem tra phim nhan.
+  31           void delay(int lap); // ham tre
+  32          
+  33           
+  34          /************CAC CHUONG TRINH CON*****************************************************************/
+  35          /*void delay(int lap)    // tao ham tre cho khi nhan phim nhan de dieu chinh thoi gian
+  36          {  for(j=0;j<lap;j++)
+  37                    for(k=0;k<0;k++)
+  38                            {};
+  39          }       
+  40          void bip(void)     // tieng bip phat ra moi khi nhan phim nhan
+  41          {
+  42          for(i=0;x<100;x++)
+  43          {
+  44          loa=1;
+  45          delay(10);
+  46          loa=0;
+  47          delay(10);
+  48          }
+  49          }       
+  50          */      // Chuong trinh khoi tao main
+  51          void set_main(void)
+  52          {
+  53   1              P1=0x00;
+  54   1              P0=0x00;
+  55   1              P2=0x00;
+C51 COMPILER V8.05a   DONGHOSO_DE                                                          06/07/2012 08:22:29 PAGE 2   
+
+  56   1              P3=0xff;
+  57   1      }
+  58                  // Setup timer 0 va timer 1 
+  59          void setup_timer(void)
+  60          {
+  61   1              TMOD=0x11; // timer 0 che do 1 va timer 1 che do 1: 16bit ko autoreload
+  62   1              TH0=-1000/256;          //thoi gian quet led                                                               
+  63   1              TL0=-1000%256;
+  64   1              TH1=0x3C;  // HIGH(-50000)
+  65   1              TL1=0xB0;//     LOW (-50000)    
+  66   1              ET1=1;   //su dung bo ngat 1
+  67   1              ET0=1;    // su dung bo ngat 0
+  68   1              EA=1;     // cho phep su dung ngat con EA=0 thi cam ngat
+  69   1              TF0=0;    //khoi tao co tran cua timer 0
+  70   1              TF1=0;    // khoi tao co tran cua timer 1
+  71   1              TR0=1;    // bat dau chay  TIMER 0                 
+  72   1              TR1=1;    // bat dau chay TIMER 1
+  73   1      }
+  74                  //ngat timer 1 chay dong ho
+  75          void T1_ISR(void) interrupt 3
+  76          {
+  77   1              TR1=0;    // 
+  78   1              TF1=0;    // nap lai gia tri cho thanh ghi 
+  79   1              TH1=0x3C; // HIGH(-50000)
+  80   1              TL1=0xB0; //     LOW (-50000)
+  81   1              time++;           // Tao vong lap 20 lan
+  82   1              if(time==20)// 20x50000us = 1s 
+  83   1              {
+  84   2              time=0;
+  85   2              giay++;
+  86   2                      if(giay==60)
+  87   2                      {
+  88   3                      giay=0;
+  89   3                      phut++;
+  90   3                      }
+  91   2                      if(phut==60)
+  92   2                      {
+  93   3                      phut=0;
+  94   3                      gio++;
+  95   3                      }
+  96   2                      if(gio==24)
+  97   2                      gio=0;
+  98   2              }
+  99   1              TR1=1;             //cho chay lai TIMER 1
+ 100   1      }
+ 101                  // ngat timer 0 de quet led
+ 102          void T0_ISR(void) interrupt 1
+ 103          {
+ 104   1              TR0=0;
+ 105   1              TF0=0;
+ 106   1              TH0=-1000/256; // Nap lai gia tri cho thanh ghi 
+ 107   1              TL0=-1000%256;
+ 108   1              
+ 109   1              index--;  // de ta quet tu led don vi giay toi led hang chuc cua gio
+ 110   1              if(index==1)
+ 111   1                              {       P0=0xff;                                  // chu y la phai dong nay rat quan trong do ko thoi la nhay loan so luon
+ 112   2                              P0=led7_data[gio/10];             // hien thi gio >>hang chuc
+ 113   2                              P2=0x01;                                          // cho led nay hien thi
+ 114   2                              index=7;                                          // khoi tao lai vong lap de quet led
+ 115   2                      }
+ 116   1              
+ 117   1              if(index==2)
+C51 COMPILER V8.05a   DONGHOSO_DE                                                          06/07/2012 08:22:29 PAGE 3   
+
+ 118   1              
+ 119   1                      {       P0=0xff;                                          // phai co
+ 120   2                              P0=led7_data[gio%10];             // hien thi gio>>> don vi
+ 121   2                              P2=0x02;                                          // cho led nay hien thi
+ 122   2                      }
+ 123   1      
+ 124   1              if(index==3)
+ 125   1                                                                                         // phai co
+ 126   1                      {       P0=0xff;
+ 127   2                              P0=led7_data[phut/10];             // hien thi phut>> hang chuc
+ 128   2                              P2=0x04;                                           // cho led nay hien thi
+ 129   2                      }
+ 130   1      
+ 131   1              if(index==4)
+ 132   1                      {                                                                                                  
+ 133   2                              P0=0xff;                                                //phai co
+ 134   2                              P0=led7_data[phut%10];                  // hien thi phut >> don vi
+ 135   2                              P2=0x08;                                                // cho led nay hien thi
+ 136   2                      }
+ 137   1              
+ 138   1              if(index==5)
+ 139   1               
+ 140   1                      {       P0=0xff;                                                // phai co
+ 141   2                              P0=led7_data[giay/10];                  // hien thi giay>> hang chuc
+ 142   2                              P2=0x10;                                                // cho led nay hien thi
+ 143   2                      }
+ 144   1              
+ 145   1              if(index==6)
+ 146   1              
+ 147   1                      {       P0=0xff;                                                // phai co
+ 148   2                              P0=led7_data[giay%10];                  //hien thi giay >>>hang don vi
+ 149   2                              P2=0x20;                                                // cho led nay hien thi
+ 150   2                               
+ 151   2                              
+ 152   2                                                                                                                                         
+ 153   2                      }
+ 154   1                      TR0=1;                                                          //cho chay lai TIMER O
+ 155   1      }
+ 156          
+ 157           
+ 158          
+ 159           
+ 160          /************CHUONG TRINH CHINH*******************************************************************/
+ 161          void main()
+ 162          { 
+ 163   1      
+ 164   1      {       set_main();
+ 165   2              time=dem=0;
+ 166   2              index=7;        
+ 167   2              
+ 168   2              setup_timer();
+ 169   2              
+ 170   2       }
+ 171   1       
+ 172   1        while(1)  // TAO VONG LAP VO HAN
+ 173   1        {       if(tang_gio==0){gio++;if(gio==24)gio=0;}while(tang_gio==0);  
+ 174   2      if(tang_phut==0){phut++;if(phut==60)phut=0;}  while(tang_phut==0); 
+ 175   2      if(tang_giay==0){giay++;if(giay==60)giay=0;}while(tang_giay==0);        
+ 176   2              
+ 177   2        }
+ 178   1      }       
+
+C51 COMPILER V8.05a   DONGHOSO_DE                                                          06/07/2012 08:22:29 PAGE 4   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    347    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     21    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

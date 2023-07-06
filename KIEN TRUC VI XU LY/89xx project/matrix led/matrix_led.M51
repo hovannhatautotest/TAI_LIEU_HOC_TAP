@@ -1,0 +1,107 @@
+BL51 BANKED LINKER/LOCATER V6.02                                                        10/17/2010  22:56:02  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.02, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE matrix_led.obj TO matrix_led
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  matrix_led.obj (MATRIX_LED)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  matrix_led (MATRIX_LED)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0020H     UNIT         _DATA_GROUP_
+            IDATA   0028H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008DH     UNIT         ?PR?MAIN?MATRIX_LED
+            CODE    0090H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   matrix_led (MATRIX_LED)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MATRIX_LED
+
+?PR?MAIN?MATRIX_LED            0008H    0020H
+
+
+
+SYMBOL TABLE OF MODULE:  matrix_led (MATRIX_LED)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MATRIX_LED
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:0003H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+BL51 BANKED LINKER/LOCATER V6.02                                                      10/17/2010  22:56:02  PAGE 2
+
+
+  D:00B8H         PUBLIC        IPL
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0004H         SYMBOL        k
+  D:0008H         SYMBOL        gt_hang
+  D:0018H         SYMBOL        gt_cot
+  -------         ENDDO         
+  C:0003H         LINE#         6
+  C:0003H         LINE#         7
+  C:0003H         LINE#         12
+  C:0009H         LINE#         13
+  C:000FH         LINE#         14
+  C:0015H         LINE#         15
+  C:001BH         LINE#         16
+  C:0021H         LINE#         17
+  C:0027H         LINE#         18
+  C:002DH         LINE#         19
+  C:0033H         LINE#         21
+  C:0039H         LINE#         22
+  C:003FH         LINE#         23
+  C:0045H         LINE#         24
+  C:004AH         LINE#         25
+  C:004EH         LINE#         26
+  C:0053H         LINE#         27
+  C:0058H         LINE#         28
+  C:005DH         LINE#         31
+  C:005DH         LINE#         32
+  C:005DH         LINE#         33
+  C:0061H         LINE#         34
+  C:0061H         LINE#         35
+  C:0064H         LINE#         36
+  C:0064H         LINE#         37
+  C:006EH         LINE#         38
+  C:0078H         LINE#         39
+  C:0083H         LINE#         40
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MATRIX_LED
+
+Program Size: data=41.0 xdata=0 code=156
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,50 @@
+A51 MACRO ASSEMBLER  NGAT_TIMER                                                           05/03/2013 18:54:28 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+OBJECT MODULE PLACED IN ngat_timer.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE ngat_timer.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+  0090                 1     P1_0 bit 0x90
+                       2     
+0000                   3     org 0x00
+0000 011E              4     ajmp main
+                       5     
+001B                   6     org 0x1B
+001B                   7     ngat_dinh_thoi:
+001B B290              8             CPL P1_0
+001D 32                9     reti
+                      10     
+001E                  11     main:
+001E 758920           12             mov TMOD,#0x20
+0021 758D9C           13             mov TH1,#156
+0024 858D8B           14             mov TL1,TH1
+0027 D2AF             15             setb EA; cho phep ngat toan cuc
+0029 D2AB             16             setb ET1; cho phep ngat cua bo dinh thoi
+002B D28E             17             setb TR1; cho bo dinh thoi 1 hoat dong
+                      18     end
+A51 MACRO ASSEMBLER  NGAT_TIMER                                                           05/03/2013 18:54:28 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+ET1. . . . . . . .  B ADDR   00A8H.3 A   
+MAIN . . . . . . .  C ADDR   001EH   A   
+NGAT_DINH_THOI . .  C ADDR   001BH   A   
+P1_0 . . . . . . .  B ADDR   0090H.0 A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
